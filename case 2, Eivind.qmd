@@ -41,23 +41,23 @@ Betrakt følgende figur:
 
 ```{r}
 df %>%
+  
+  mutate(gdp = gdp/10^12) %>%
 
-mutate(gdp = gdp/10^12) %>%
+  mutate(co2 = co2/10^3) %>%
 
-mutate(co2 = co2/10^3) %>%
-
-filter(country %in% list) %>% 
-
-ggplot(aes(x=gdp, y=co2, color = country)) %>%
-
-+ geom_point() %>%
-
-+ geom_smooth(se = FALSE) %>%
-
-+ labs(y = "CO2", x = "GDP", title = "GDP vs CO2", subtitle = "Production-based C02 emissions, billions of tons. 
+  filter(country %in% list) %>% 
+  
+  ggplot(aes(x=gdp, y=co2, color = country)) %>%
+  
+  + geom_point() %>%
+  
+  + geom_smooth(se = FALSE) %>%
+  
+  + labs(y = "CO2", x = "GDP", title = "GDP vs CO2", subtitle = "Production-based C02 emissions, billions of tons. 
 GDP in trillions of USD, constant 2011 prices at purchasing power parity. 1850-2020.", color = "Country") %>%
-
-+ theme_bw()
+  
+  + theme_bw()
 ```
 
 Kommandoen `geom_smooth()` bruker en såkalt lokal regresjon til å tegne en kurve gjennom datapunktene. Dere kan tenke på dette som en gjennomsnittlig sammenheng, eller at man har tegnet en strek gjennom datapunktene med en penn.
@@ -66,9 +66,11 @@ Kommandoen `geom_smooth()` bruker en såkalt lokal regresjon til å tegne en kur
 
 Gi en fullstendig og nøyaktig beskrivelse av figuren. Tolk helningen på linjene og diskuter variasjon mellom og innad i landene. Drøft hvilke forhold figuren illustrerer på en god måte og hvilken informasjon som er vanskelig å tolke.
 
-$$Svar på oppgave Ia her.$$
+*\[Svar på oppgave Ia her.\]*
 
-\### Oppgave Ib
+Vi kan se at landene med stor gdp vil ha større produksjonsbaserte co2-utslipp enn land med lavere gdp. Vi kan se at Kina etterhvert vokser i fra USA, og det kan skyldes at USA blir mer miljøbevist, mens Kina fortsetter å være en veldig stor produsent av mange varer. Kina har også en veldig stor befolkning i forhold til de andre landene det er sammenlignet med. Informasjonen på India, Japan og Tyskland kan være vanskelig å tolke, fordi de tar lite plass på grafen, men det kan å vise hvor stor forskjell det er på de store produksjonslandene og de mindre.
+
+### Oppgave Ib
 
 Vi betrakter nå et normalisert mål på sammenhengen CO2-utslipp og inntekt. La $CO2_{t}$ og $BNP_{t}$ være henholdsvis årlige utslipp av CO2 og brutto nasjonalprodukt i år $t$. Vi måler $CO2_{t}$ i kilogram og $BNP_{t}$ i kjøpekraftjusterte USD ved faste 2011-priser. Vi kan definere karbonintensiteten i produksjon som $CI_{t}=CO{2}_{t}/BNP_{t}$, altså antall kilogram CO2 per USD i verdiskapning.
 
@@ -76,11 +78,25 @@ Lag en figur som viser karbonintensiteten $CI_{t}$ til de fem største økonomie
 
 ```{r}
 # Løs oppgave Ib her
+df %>% 
+  mutate(ci=co2/gdp) %>% 
+  
+  filter(country %in% list) %>% 
+  
+  ggplot(aes(x = year, y = ci, color=country)) %>% 
+  
+  + geom_smooth()
+  
+  
+
+  
 ```
 
-$$Besvar oppgave 1b her$$
+*\[Besvar oppgave 1b her\]*
 
-\### Oppgave Ic
+Vi kan se at Tyskland har en stor karbonintensitet. Det kan skyldes at de er en del færre innbyggere enn land som f.eks. Kina og USA.
+
+### Oppgave Ic
 
 Undersøk hvorvidt bruken av kull som energikilde kan forklare forskjellen i karbonintensitet mellom de fem største landene. Lag to figurer og 100-200 ord med tekst. Husk å gi en fullstendig og nøyaktig beskrivelse av figurene.
 
@@ -88,11 +104,28 @@ Undersøk hvorvidt bruken av kull som energikilde kan forklare forskjellen i kar
 
 ```{r}
 # besvar oppgave 1c her
+df %>% 
+  mutate(ci=co2/gdp) %>% 
+  
+  filter(country %in% list) %>% 
+  
+  ggplot(aes(x = year, y = ci, color=country)) %>% 
+  
+  +geom_smooth()
+
+
+df %>% 
+  filter(country %in% list) %>% 
+  
+  ggplot(aes(x = year, y = coal_co2, color=country)) %>% 
+  
+  +geom_smooth()
+
 ```
 
-$$Besvar oppgave Ic her$$
+*\[Besvar oppgave Ic her\]*
 
-\## II. Konsumbaserte CO2-utslipp
+## II. Konsumbaserte CO2-utslipp
 
 I den foregående analysen har vi slått fast at Kina har høy karbonintensitet i produksjon og at kullforbrenning står for en høy andel av deres utslipp. I hvilken grad kan utslippene knyttes til eksportrettet produksjon? I dataene fra OWID har de variable som de kaller konsumbaserte utslipp, for eksempel variabelen `consumption_co2.`
 
@@ -100,9 +133,9 @@ I den foregående analysen har vi slått fast at Kina har høy karbonintensitet 
 
 Forklar hvordan konsumbaserte CO2-utslipp er konstruert og hvordan vi skal tolke den.
 
-$$Besvar oppgave IIa her.$$
+*\[Besvar oppgave IIa her.\]*
 
-\### Oppgave IIb
+### Oppgave IIb
 
 Lag en figur som viser utviklingen av konsumbasert CO2 per person og totale, konsumbaserte utslipp. Gi en fullstendig og nøyaktig beskrivelse av figuren og forklar hva den viser.
 
@@ -110,19 +143,29 @@ Lag en figur som viser utviklingen av konsumbasert CO2 per person og totale, kon
 
 ```{r}
 # besvar oppgave IIb her
+df %>% 
+  filter(country %in% list) %>% 
+  
+  ggplot(aes(x = year, y = consumption_co2_per_capita, color=country)) %>% 
+  + xlim(1990, 2020) %>%
+  
+  +geom_point(aes(size = consumption_co2)) %>%
+  
+  +geom_smooth()
+
 ```
 
-$$Besvar oppgave IIb her.$$
+*\[Besvar oppgave IIb her.\]*
 
-\## III. Produksjon- og konsumbaserte utslipp
+## III. Produksjon- og konsumbaserte utslipp
 
 Betrakt følgende figur, og gi en konkret forklaring på hva den viser.
 
 ```{r}
 df %>%
-  
+
   filter(country %in% c(list)) %>% 
-  
+
   ggplot(aes(x=year, y=trade_co2_share, color = country)) %>%
   
   + xlim(1990,2020) %>%
@@ -137,4 +180,4 @@ Positive (negative) value indicates net imports (export) of CO2 emissions.", col
   + theme_bw()
 ```
 
-$$Besvar oppgave III her$$
+*\[Besvar oppgave III her\]*
