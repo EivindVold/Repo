@@ -85,7 +85,7 @@ df %>%
   
   ggplot(aes(x = year, y = ci, color=country)) %>% 
   
-  + geom_smooth()
+  + geom_smooth(se=FALSE)
   
   
 
@@ -94,7 +94,7 @@ df %>%
 
 *\[Besvar oppgave 1b her\]*
 
-Vi kan se at Tyskland har en stor karbonintensitet. Det kan skyldes at de er en del færre innbyggere enn land som f.eks. Kina og USA.
+Vi kan se at Tyskland har en stor karbonintensitet. Det kan skyldes at de er en del færre innbyggere enn land som f.eks. Kina og USA. Det betyr at selv om Tyskland ikke bidrar med like mye co2-utslipp, vil de være høyt oppe på grafen, fordi de har stor karbonintensitet per innbygger. Den forrige figuren viser at jo høyere gdp et land har, jo høyere vil produksjonsbasert co2-utslipp være. Vi ser at Tyskland og USA først har en stor økning, og deretter en stor nedgang, dette skyldes mest sannsynlig fokuset på å være mer miljøbevist. Kina derimot har hatt en gradvis økning, noe som viser veksten deres i produksjon. grunnen til at de er lavere enn land som USA og Tyskland er antall innbyggere i landet.
 
 ### Oppgave Ic
 
@@ -111,7 +111,7 @@ df %>%
   
   ggplot(aes(x = year, y = ci, color=country)) %>% 
   
-  +geom_smooth()
+  +geom_smooth(se=FALSE)
 
 
 df %>% 
@@ -119,7 +119,7 @@ df %>%
   
   ggplot(aes(x = year, y = coal_co2, color=country)) %>% 
   
-  +geom_smooth()
+  +geom_smooth(se=FALSE)
 
 ```
 
