@@ -188,4 +188,4 @@ Positive (negative) value indicates net imports (export) of CO2 emissions.", col
 
 *\[Besvar oppgave III her\]*
 
-Landene som er over 0 på grafen, er nettoimportører av utslipp. De importerer mer CO2 innebygd i varer enn de eksporterer. Landene som er under 0 på grafen, er nettoeksportører av utslipp. De eksporterer mer CO2 innebygd i varer enn de importerer. De forbruksbaserte utslippene i Kina er lavere enn deres produksjonsbaserte utslipp. Det vil være motsatt for Japan for eksempel.
+Landene som er over 0 på grafen, er nettoimportører av utslipp. De importerer mer CO2 innebygd i varer enn de eksporterer. Landene som er under 0 på grafen, er nettoeksportører av utslipp. De eksporterer mer CO2 innebygd i varer enn de importerer. De forbruksbaserte utslippene i Kina er lavere enn deres produksjonsbaserte utslipp. Det vil være motsatt for Tyskland eller Japan for eksempel.
