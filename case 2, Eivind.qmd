@@ -125,6 +125,8 @@ df %>%
 
 *\[Besvar oppgave Ic her\]*
 
+Vi kan se at grafene er veldig ulike, men viser litt av det samme. Hvis vi sammenligner Kina på begge grafene, ser vi at etter 1950, får de en stor økning på begge grafene. Noe som kan indikere at kull som energikilde kan forklare forskjellen i karbonintensitet mellom de fem største økonomiene. India og Japan viser også relativt det samme på de to grafene. Land som USA og Tyskland derimot, har en økende og stor karbonintensitet, fram til 1900. Da begynner de å minke. Ved å sammenligne disse med kull som energikilde, kan vi se at de ikke henger helt sammen. Dette kan skyldes at USA og Tyskland har andre energikilder som skyldes deres utslipp, og at de er mye færre innbyggere enn Kina.
+
 ## II. Konsumbaserte CO2-utslipp
 
 I den foregående analysen har vi slått fast at Kina har høy karbonintensitet i produksjon og at kullforbrenning står for en høy andel av deres utslipp. I hvilken grad kan utslippene knyttes til eksportrettet produksjon? I dataene fra OWID har de variable som de kaller konsumbaserte utslipp, for eksempel variabelen `consumption_co2.`
@@ -134,6 +136,8 @@ I den foregående analysen har vi slått fast at Kina har høy karbonintensitet 
 Forklar hvordan konsumbaserte CO2-utslipp er konstruert og hvordan vi skal tolke den.
 
 *\[Besvar oppgave IIa her.\]*
+
+Konsumbaserte CO2-utslipp handler om hvilke utslipp som blir gjort av befolkningen og det de konsumerer, altså det som blir konsumert. Vi tolker det som forbruk av varer og tjenester. Man kan skille mellom det private og det offentlige konsum.
 
 ### Oppgave IIb
 
@@ -156,6 +160,8 @@ df %>%
 ```
 
 *\[Besvar oppgave IIb her.\]*
+
+Figuren viser utviklingen av konsumbasert CO2 per person og totale konsumbaserte utslipp. Vi kan se denne utviklingen over tid ved x-aksen, og utviklingen av konsumbasert CO2 per person over y-aksen. Vi kan f.eks. se at USA har høy konsumbasert CO2 per person og at CO2 konsumen er høy.
 
 ## III. Produksjon- og konsumbaserte utslipp
 
@@ -181,3 +187,5 @@ Positive (negative) value indicates net imports (export) of CO2 emissions.", col
 ```
 
 *\[Besvar oppgave III her\]*
+
+Landene som er over 0 på grafen, er nettoimportører av utslipp. De importerer mer CO2 innebygd i varer enn de eksporterer.
