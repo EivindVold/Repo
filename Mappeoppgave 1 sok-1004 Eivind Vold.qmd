@@ -2,19 +2,25 @@
 
 her kan være kapittel 6 "Økende ulikhet" i "Verden og oss, Næringslivets perspektivmelding 2018", NHO.
 
-Oppgave 1a Hva menes med inntektsulikhet i et land?
+**Oppgave 1a Hva menes med inntektsulikhet i et land?**
 
-Oppgave 1b Hva er mulige grunner for at inntekten er fordelt ulikt i samfunnet?
+Inntekt kan defineres som penger en person eller en bedrift mottar i bytte mot å selge en vare eller en tjeneste. For å måle den økonomiske ulikheten kan inntekt brukes. Inntektsulikheten sier noe om forskjellene mellom inntektene til folk, ofte på ett år. Inntektsulikhet i et land vil dermed være forskjellen på inntekt mellom innbyggerne av landet.
 
-Oppgave 1c Hvilke konsekvenser kan ulikhet i inntektsfordelingen føre til?
+**Oppgave 1b Hva er mulige grunner for at inntekten er fordelt ulikt i samfunnet?**
 
-Oppgave 2. Måling av ulikhet I datasettet fra OECD finner man 5 mål på inntektsulikhet: tre ulike Gini-koeffisienter, P90P10 og S80S20.
+Jeg tror at den største grunnen for ulik inntekt i et samfunn er etterspørsel og tilbud. Høy lønn i et yrke vil gi
 
-Oppgave 2a Forklar hvordan Gini-koeffisientene beregnes og hvordan de bør tolkes. Hva måler P90P10 og S80S20?
+Lønn avhenger av en rekke faktorer; arbeidstid, alder, arbeidsoppgaver og utdanning.
 
-Oppgave 2b Diskuter svakheter og styrker med disse målene på ulikhet. I hvilke situasjoner er hvert mål mest relevant? En ressurs her kan være "Slik måler SSB ulikhet", Statistisk sentralbyrå (2019).
+**Oppgave 1c Hvilke konsekvenser kan ulikhet i inntektsfordelingen føre til?**
 
-Oppgave 3. Inntektsulikhet i Norge 2008-2019 Her skal det brukes et datasett fra OECD som gir ulike mål på ulikhet (Variabel: MEASURE eller Measure), for årene 2008-2019 (Year), for hele befolkningen (AGE=TOT), gruppa som er utgjør arbeidsstyrken (AGE=WA), samt de som er pensjonert (AGE=OLD). Datasettet inneholder også antall personer i hver av disse gruppene. Kolonne "Value" angir alle verdiene, og "Unit" forteller hvordan disse er målt.
+# **Oppgave 2. Måling av ulikhet I datasettet fra OECD finner man 5 mål på inntektsulikhet: tre ulike Gini-koeffisienter, P90P10 og S80S20.**
+
+**Oppgave 2a Forklar hvordan Gini-koeffisientene beregnes og hvordan de bør tolkes. Hva måler P90P10 og S80S20?**
+
+**Oppgave 2b Diskuter svakheter og styrker med disse målene på ulikhet. I hvilke situasjoner er hvert mål mest relevant? En ressurs her kan være "Slik måler SSB ulikhet", Statistisk sentralbyrå (2019).**
+
+**Oppgave 3. Inntektsulikhet i Norge 2008-2019 Her skal det brukes et datasett fra OECD som gir ulike mål på ulikhet (Variabel: MEASURE eller Measure), for årene 2008-2019 (Year), for hele befolkningen (AGE=TOT), gruppa som er utgjør arbeidsstyrken (AGE=WA), samt de som er pensjonert (AGE=OLD). Datasettet inneholder også antall personer i hver av disse gruppene. Kolonne "Value" angir alle verdiene, og "Unit" forteller hvordan disse er målt.**
 
 Slett minne, last inn tidyverse.
 
