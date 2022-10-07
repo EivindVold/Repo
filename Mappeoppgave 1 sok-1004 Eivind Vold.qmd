@@ -30,6 +30,8 @@ En streik kan oppstå når arbeidsgiver og en fagforening ikke blir enige om lø
 
 Vare og tjenestemarkeder har blitt mindre regulerte, noe som fører til mer konkurranse, høyere verdiskapning og mer effektivitet. Men Dette kan å bidra til svakere vern for arbeidstakere og større ulikheter.
 
+En annen konsekvens av inntektsulikheter er at folk med lavere inntekter, har lavere levestandarer. De lever også kortere enn folk med høyere inntekter i mange land. Foreldre som har høy utdanning, vil ofte ha barn som gjør det bedre på skolen enn barn med foreldre som tjener mindre. Inntektsulikheten vil altså kunne påvirke livskvaliteten til mennesker.
+
 **Oppgave 2. Måling av ulikhet I datasettet fra OECD finner man 5 mål på inntektsulikhet: tre ulike Gini-koeffisienter, P90P10 og S80S20.**
 
 **Oppgave 2a Forklar hvordan Gini-koeffisientene beregnes og hvordan de bør tolkes. Hva måler P90P10 og S80S20?**
