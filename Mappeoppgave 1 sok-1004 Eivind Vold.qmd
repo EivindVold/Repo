@@ -8,11 +8,19 @@ Inntekt kan defineres som penger en person eller en bedrift mottar i bytte mot �
 
 **Oppgave 1b Hva er mulige grunner for at inntekten er fordelt ulikt i samfunnet?**
 
-Jeg tror at den største grunnen for ulik inntekt i et samfunn er etterspørsel og tilbud. Høy lønn i et yrke vil gi
+Jeg tror at den største grunnen for ulik inntekt i et samfunn handler om etterspørsel og tilbud. Høy lønn i et yrke vil gi økt tilbud for arbeidskraft, noe som deretter fører til at lønnen faller.
 
-Lønn avhenger av en rekke faktorer; arbeidstid, alder, arbeidsoppgaver og utdanning.
+Kompenserende lønnsforskjeller er også viktig å se på for å fortstå hvorfor det er ulik lønn i ulike yrker. Lønn avhenger av en rekke faktorer; arbeidstid, alder, arbeidsoppgaver og utdanning. En utdanning som krever mer og tar lengre tid, vil ofte bli kompansert bedre enn en korterte og mindre krevende utdanning.
+
+Effektivitetslønn vil si at i noen jobber kan det være mer lønnsomt å øke lønnen fordi de ansatte vil jobbe mer effektivt. Høyere lønn vil altså effektivisere jobbhverdagen.
+
+Hvis myndighetene hadde pålagt lik lønn for alle, ville kanskje mange valgt å jobbe mindre, eller redusere effektiviteten. Dette kan føre til at alle får det værre. Mange yrker ville mest sannsynlig fått mangel på arbeidskraft siden en postmann tjener like mye som en lege. Man ville altså ikke blitt kompansert for alle utgiftene, tiden og innsatsen man legger ned i en lang utdanning.
+
+Det er ulike syn på hva som er rettferdig og urettferdig. Noen mener at vi bør streve etter likhet i muligheter heller enn likhet i resultat. Men det kan være vanskelig å definere "like muligheter" konkret. Det finnes mange forskjellige syn på hva som er rettferdig og urettferdig, og det er opp til enkeltpersonen selv å tolke dette.
 
 **Oppgave 1c Hvilke konsekvenser kan ulikhet i inntektsfordelingen føre til?**
+
+Ulikhet i inntektsfordelingen kan føre til
 
 # **Oppgave 2. Måling av ulikhet I datasettet fra OECD finner man 5 mål på inntektsulikhet: tre ulike Gini-koeffisienter, P90P10 og S80S20.**
 
