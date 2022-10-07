@@ -1,4 +1,4 @@
-# Oppgave 1. Årsaker og konsekvenser av ulikhet En ressurs til oppgave 1
+**Oppgave 1. Årsaker og konsekvenser av ulikhet En ressurs til oppgave 1**
 
 her kan være kapittel 6 "Økende ulikhet" i "Verden og oss, Næringslivets perspektivmelding 2018", NHO.
 
@@ -20,9 +20,17 @@ Det er ulike syn på hva som er rettferdig og urettferdig. Noen mener at vi bør
 
 **Oppgave 1c Hvilke konsekvenser kan ulikhet i inntektsfordelingen føre til?**
 
-Ulikhet i inntektsfordelingen kan føre til
+Inntektsfordelingen kan føre til økt produktivitet i høyere betalte yrker, men lavere produktivitet i dårlige betalte yrker. Det handler om å finne en balanse flest folk er fornøyde med. Ved økte økonomiske ulikheter, vil det redusere tilitten i samfunnet mellom myndighetene og menneskene. Dette kan ha negative effekter på samfunnet og økonomien.
 
-# **Oppgave 2. Måling av ulikhet I datasettet fra OECD finner man 5 mål på inntektsulikhet: tre ulike Gini-koeffisienter, P90P10 og S80S20.**
+Ulikhet i inntektsfordelingen kan føre til urettferdighet og rettferdighet. Noen yrker som krever lang utdanning og innsats, vil bli kompansert med høy lønning. Dette kan føles rettferdig.
+
+Men det er også yrker som kan kreve lang utdanning som har langt lavere lønn. For eksempel en master i lektorutdanning. Dette kan føre til misnøye og deretter til streik. Det er lærerstreik akkurat nå, noe som viser til misnøye hos lærere, og en følelse av urettferdighet.
+
+En streik kan oppstå når arbeidsgiver og en fagforening ikke blir enige om lønnsforhandlinger. Lærere har hatt lavere lønnsvekst enn andre yrker innefor kommunene og fylkene. Lærere kan føle at deres brede kompetanse og lange utdanning ikke blir verdsatt. Når det er streik vil produktiviteten stoppe. Inntektsfordelig kan altså føre til streik.
+
+Vare og tjenestemarkeder har blitt mindre regulerte, noe som fører til mer konkurranse, høyere verdiskapning og mer effektivitet. Men Dette kan å bidra til svakere vern for arbeidstakere og større ulikheter.
+
+**Oppgave 2. Måling av ulikhet I datasettet fra OECD finner man 5 mål på inntektsulikhet: tre ulike Gini-koeffisienter, P90P10 og S80S20.**
 
 **Oppgave 2a Forklar hvordan Gini-koeffisientene beregnes og hvordan de bør tolkes. Hva måler P90P10 og S80S20?**
 
