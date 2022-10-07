@@ -30,13 +30,23 @@ En streik kan oppstå når arbeidsgiver og en fagforening ikke blir enige om lø
 
 Vare og tjenestemarkeder har blitt mindre regulerte, noe som fører til mer konkurranse, høyere verdiskapning og mer effektivitet. Men Dette kan å bidra til svakere vern for arbeidstakere og større ulikheter.
 
-En annen konsekvens av inntektsulikheter er at folk med lavere inntekter, har lavere levestandarer. De lever også kortere enn folk med høyere inntekter i mange land. Foreldre som har høy utdanning, vil ofte ha barn som gjør det bedre på skolen enn barn med foreldre som tjener mindre. Inntektsulikheten vil altså kunne påvirke livskvaliteten til mennesker.
+En annen konsekvens av inntektsulikheter er at folk med lavere inntekter, har lavere levestandarer. De lever også ofte kortere enn folk med høyere inntekter i mange land. Foreldre som har høy utdanning, vil ofte ha barn som gjør det bedre på skolen enn barn med foreldre som tjener mindre. Inntektsulikheten vil altså kunne påvirke livskvaliteten til mennesker.
 
 **Oppgave 2. Måling av ulikhet I datasettet fra OECD finner man 5 mål på inntektsulikhet: tre ulike Gini-koeffisienter, P90P10 og S80S20.**
 
-**Oppgave 2a Forklar hvordan Gini-koeffisientene beregnes og hvordan de bør tolkes. Hva måler P90P10 og S80S20?**
+**Oppgave 2a Forklar hvordan Gini-koeffisientene beregnes og hvordan de bør tolkes. Hva måler P90/P10 og S80/S20?**
+
+Gini-koeffsienten måler inntektsulikhet innenfor en befolkning eller et land. Den beregnes ved å se på hvor mye formue og inntekt det totalt sett finnes i et land, og deretter hvordan dette er fordelt i befolkningen. Resultatet vil være mellom 1 og 0.
+
+Hvis alle har lik inntekt og formue i et land, vil Gini-koeffisienten være 0. Dette er kalt en perfekt likhet. Om en enkelt person har all inntekten og formuen i et land, vil Gini-koeffisienten være 1. Dette er kalt en perfekt ulikhet. Desto nærmere man er 0, vil det være mer likhet, det motsatte gjelder for avstanden til 1. Et eksempel på dette er OECDs målinger fra 2017, hvor Norge hadde en Gini-koeffisient på 0,262 og Sør-Afrika på 0,620.
+
+P90/P10 er et mål hvor man sorterer befolkningen etter størrelse på inntekt etter skatt. P90/P10 er et forholdstall mellom folket med litt mer inntekt enn 90 prosent av befolkningen, og folket med litt mindre inntekt enn 90 prosent av befolkningen. I dette målet utelukkes de 10 prosentene som er rikest og de 10 prosentene som er fattigst, noe som gjør at vi kan få en jevnere utvikling over tid enn andre ulikhetsmål. Den sammenligner altså tallet som ligger nøyaktig på 10-prosentlinjen og 90-prosentlinjen.
+
+S80/S20 er et mål som viser gjennomsnittsinntekten til de 20 prosent av befolkningen med lavest inntekt, og de 20 prosent med høyest inntekt. I dette målet brukes gjennomsnittet til de 20 prosent rikeste og fattigste til å måle ulikheten. Dette gjør at vi vil få et høyere forholdstall enn ved f.eks. P90/P10 målet.
 
 **Oppgave 2b Diskuter svakheter og styrker med disse målene på ulikhet. I hvilke situasjoner er hvert mål mest relevant? En ressurs her kan være "Slik måler SSB ulikhet", Statistisk sentralbyrå (2019).**
+
+Målene sir noe om hvor stor avstand det er mellom de fattige og de rike, og hvordan inntektene er delt i befolkningen. Et land som Norge har svært få personer med svært lave inntekter og svært få med høye inntekter. Hvis vi skulle fått en best mulig måling på Norge ville det kanskje vært smart å bruke P90/P10, fordi flesteparten av innbyggerne har relativ grei inntekt. Vi får da et tall som sier oss mer om ulikheten i Norge, enn vi hadde med S80/S20 som kun inkluderer de 20 prosent med lavest og høyest inntekt.
 
 **Oppgave 3. Inntektsulikhet i Norge 2008-2019 Her skal det brukes et datasett fra OECD som gir ulike mål på ulikhet (Variabel: MEASURE eller Measure), for årene 2008-2019 (Year), for hele befolkningen (AGE=TOT), gruppa som er utgjør arbeidsstyrken (AGE=WA), samt de som er pensjonert (AGE=OLD). Datasettet inneholder også antall personer i hver av disse gruppene. Kolonne "Value" angir alle verdiene, og "Unit" forteller hvordan disse er målt.**
 
@@ -56,7 +66,7 @@ oecd_n <- url %>%
   read_csv()
 ```
 
-Oppgave 3a Bruk datasettet til å lage en figur med tre paneler ved siden av hverandre. Jeg anbefaler å bruke funksjonen facets, se eksempelet under. I hver figur skal du tegne et spredningsplott (scatterplot) ved hjelp av ggplot og geom_point(), med årstall på den horisontale x-aksen, og verdien på Gini på den vertikale y-aksen. Tegn inn alle tre definisjoner av Gini som du har i datasettet.
+**Oppgave 3a Bruk datasettet til å lage en figur med tre paneler ved siden av hverandre. Jeg anbefaler å bruke funksjonen facets, se eksempelet under. I hver figur skal du tegne et spredningsplott (scatterplot) ved hjelp av ggplot og geom_point(), med årstall på den horisontale x-aksen, og verdien på Gini på den vertikale y-aksen. Tegn inn alle tre definisjoner av Gini som du har i datasettet.**
 
 I det første panelet i figuren velger du hele befolkningen, i det andre panelet tar du arbeidere, og i det tredje pensjonister. Gi hele figuren og hvert panel passende titler, og husk benevning av aksene, samt legende til figuren (plasser den gjerne under figuren).
 
@@ -79,15 +89,15 @@ oecd_n %>% # data
 
 Gi en nøyaktig beskrivelse av figuren med de tre Gini-målene. Bruk figuren til å svare på følgende spørsmål:
 
-Hva viser Gini-målene om utviklingen av ulikhet i Norge?
+**Hva viser Gini-målene om utviklingen av ulikhet i Norge?**
 
-Hvordan forklarer man eventuelle forskjeller mellom de tre Gini-koeffisientene?
+**Hvordan forklarer man eventuelle forskjeller mellom de tre Gini-koeffisientene?**
 
-Er det forskjeller i ulikhet mellom arbeidere og pensjonister?
+**Er det forskjeller i ulikhet mellom arbeidere og pensjonister?**
 
-Hvilken rolle spiller samfunnets institusjoner, for eksempel skatte- og pensjonssystemet, for utjevning av ulikhet mellom arbeidere og pensjonister?
+**Hvilken rolle spiller samfunnets institusjoner, for eksempel skatte- og pensjonssystemet, for utjevning av ulikhet mellom arbeidere og pensjonister?**
 
-Oppgave 3b Lag en ny figur hvor du bruker de andre ulikhetsmålene (P90P10 og S80S20) til å undersøke ulikhet mellom arbeidere og pensjonister i tidsperioden 2008-2019. Her kan du for eksempel tegne et spredningsplott for hver gruppe. Bruk figuren som grunnlag for å beskrive inntektsulikhet. Er svarene dine det samme som i 3a? Hvorfor/hvorfor ikke?
+**Oppgave 3b Lag en ny figur hvor du bruker de andre ulikhetsmålene (P90P10 og S80S20) til å undersøke ulikhet mellom arbeidere og pensjonister i tidsperioden 2008-2019. Her kan du for eksempel tegne et spredningsplott for hver gruppe. Bruk figuren som grunnlag for å beskrive inntektsulikhet. Er svarene dine det samme som i 3a? Hvorfor/hvorfor ikke?**
 
 Oppgave 4. Casestudie: Tromsø kommune 2015 Her skal vi se på skattetall for Troms fylke fra 2015.
 
