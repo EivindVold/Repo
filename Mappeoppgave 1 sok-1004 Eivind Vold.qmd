@@ -1,3 +1,9 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
 **Oppgave 1. Årsaker og konsekvenser av ulikhet En ressurs til oppgave 1**
 
 her kan være kapittel 6 "Økende ulikhet" i "Verden og oss, Næringslivets perspektivmelding 2018", NHO.
@@ -74,17 +80,17 @@ For å hjelpe kan dere tilpasse denne koden som viser befolkningstall fra OECD d
 
 ```{r}
 oecd_n %>% # data
-  filter(MEASURE =="IND") %>% # velg ut de observasjonene vi vil ha
-  ggplot(aes(x = Year, y=Value, color=MEASURE))+ # definer aksene
-  geom_point()+ # plott som punkt
-  scale_x_continuous(breaks=c(2008, 2010, 2012, 2014, 2016, 2018))+ # unngår at årstall blir gjort om til desimal
-  labs (title = " Befolkningstall for Norge, 2008-2019", y = "Antall", x= "År")+ # tittel på figuren og benevning av aksene
-  facet_wrap(~ factor (AGE, (levels=c("TOT", "WA", "OLD"))), # lag tre paneler etter alder i fornuftig rekkefølge med passende titler 
+  filter(MEASURE =="GINI" | MEASURE =="GINIB"  | MEASURE=="GINIG") %>%
+  ggplot(aes(x = Year, y=Value, color=MEASURE))+
+  geom_point()+ 
+  scale_x_continuous(breaks=c(2008, 2010, 2012, 2014, 2016, 2018))+ # 
+  labs (title = " Befolkningstall for Norge, 2008-2019", y = "Antall", x= "År")+
+  facet_wrap(~ factor (AGE, (levels=c("TOT", "WA", "OLD"))), 
                        labeller = as_labeller(
                          c("TOT" = "Alle", 
                            "WA" = "Arbeidere", 
-                           "OLD" = "Pensjonert")))+ # tilpass tittel på panelene
-  theme(legend.position = "bottom") # flytt legende for at størrelsen på plottene blir bra
+                           "OLD" = "Pensjonert")))+ 
+  theme(legend.position = "bottom") 
 ```
 
 Gi en nøyaktig beskrivelse av figuren med de tre Gini-målene. Bruk figuren til å svare på følgende spørsmål:
@@ -95,9 +101,28 @@ Gi en nøyaktig beskrivelse av figuren med de tre Gini-målene. Bruk figuren til
 
 **Er det forskjeller i ulikhet mellom arbeidere og pensjonister?**
 
+Samfunnets instutiosjoner ugjør forskjellen mellom pensjonister mer enn det gjør for arbeidere.
+
 **Hvilken rolle spiller samfunnets institusjoner, for eksempel skatte- og pensjonssystemet, for utjevning av ulikhet mellom arbeidere og pensjonister?**
 
+Samfunnets institusjoner
+
 **Oppgave 3b Lag en ny figur hvor du bruker de andre ulikhetsmålene (P90P10 og S80S20) til å undersøke ulikhet mellom arbeidere og pensjonister i tidsperioden 2008-2019. Her kan du for eksempel tegne et spredningsplott for hver gruppe. Bruk figuren som grunnlag for å beskrive inntektsulikhet. Er svarene dine det samme som i 3a? Hvorfor/hvorfor ikke?**
+
+```{r}
+oecd_n %>% # data
+  filter(MEASURE =="P90P10" | MEASURE =="S80S20") %>%
+  ggplot(aes(x = Year, y=Value, color=MEASURE))+
+  geom_point()+ 
+  scale_x_continuous(breaks=c(2008, 2010, 2012, 2014, 2016, 2018))+ # 
+  labs (title = " Befolkningstall for Norge, 2008-2019", y = "Antall", x= "År")+
+  facet_wrap(~ factor (AGE, (levels=c("TOT", "WA", "OLD"))), 
+                       labeller = as_labeller(
+                         c("TOT" = "Alle", 
+                           "WA" = "Arbeidere", 
+                           "OLD" = "Pensjonert")))+ 
+  theme(legend.position = "bottom") 
+```
 
 Oppgave 4. Casestudie: Tromsø kommune 2015 Her skal vi se på skattetall for Troms fylke fra 2015.
 
@@ -168,4 +193,29 @@ ggplot(harstad, aes(inntekt))+
   theme_minimal()
 ```
 
-Tegn to Lorenz-kurver for Tromsø kommune (før og etter skatt), samt tilhørende Gini-koeffisienter. Sammenlikn med de relevante Gini-koeffisientene for hele Norge fra 2015 fra OECD datasettet. Er inntektsfordelingen i Tromsø mer eller mindre lik sammenliknet med landet som helhet? Gi mulige forklaringer.
+Tegn to Lorenz-kurver for Tromsø kommune (før og etter skatt), samt tilhørende Gini-koeffisienter. Sammenlikn med de relevante Gini-koeffisientene for hele Norge fra 2015 fra OECD datasettet.
+
+**Er inntektsfordelingen i Tromsø mer eller mindre lik sammenliknet med landet som helhet? Gi mulige forklaringer.**
+
+Tromsø
+
+```{r}
+ggplot(tromso, aes(inntekt))+
+  stat_lorenz()+ 
+  annotate_ineq(tromso$inntekt)+
+  labs (x="andel av befolkningen", y= "andel av inntekt", title = "Lorenz-kurve, tromsø kommune 2015")+
+  theme_minimal()
+```
+
+```{r}
+
+tromso <- tromso %>% 
+mutate(nettoinntekt=inntekt-skatt)
+
+
+ggplot(tromso, aes(nettoinntekt))+
+  stat_lorenz()+ 
+  annotate_ineq(tromso$nettoinntekt)+
+  labs (x="andel av befolkningen", y= "andel av inntekt", title = "Lorenz-kurve, tromsø kommune 2015")+
+  theme_minimal()
+```
