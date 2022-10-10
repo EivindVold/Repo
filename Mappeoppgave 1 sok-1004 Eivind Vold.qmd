@@ -52,7 +52,7 @@ S80/S20 er et mål som viser gjennomsnittsinntekten til de 20 prosent av befolkn
 
 **Oppgave 2b Diskuter svakheter og styrker med disse målene på ulikhet. I hvilke situasjoner er hvert mål mest relevant? En ressurs her kan være "Slik måler SSB ulikhet", Statistisk sentralbyrå (2019).**
 
-Målene sir noe om hvor stor avstand det er mellom de fattige og de rike, og hvordan inntektene er delt i befolkningen. Et land som Norge har svært få personer med svært lave inntekter og svært få med høye inntekter. Hvis vi skulle fått en best mulig måling på Norge ville det kanskje vært smart å bruke P90/P10, fordi flesteparten av innbyggerne har relativ grei inntekt. Vi får da et tall som sier oss mer om ulikheten i Norge, enn vi hadde med S80/S20 som kun inkluderer de 20 prosent med lavest og høyest inntekt.
+Målene sir noe om hvor stor avstand det er mellom de fattige og de rike, og hvordan inntektene er delt i befolkningen. Et land som Norge har svært få personer med svært lave inntekter og få med høye inntekter. Hvis vi skulle fått en best mulig måling på Norge ville det kanskje vært smart å bruke P90/P10, fordi flesteparten av innbyggerne har relativ grei inntekt. Vi får da et tall som sier oss mer om ulikheten i Norge, enn vi hadde med S80/S20 som kun inkluderer de 20 prosent med lavest og høyest inntekt.
 
 **Oppgave 3. Inntektsulikhet i Norge 2008-2019 Her skal det brukes et datasett fra OECD som gir ulike mål på ulikhet (Variabel: MEASURE eller Measure), for årene 2008-2019 (Year), for hele befolkningen (AGE=TOT), gruppa som er utgjør arbeidsstyrken (AGE=WA), samt de som er pensjonert (AGE=OLD). Datasettet inneholder også antall personer i hver av disse gruppene. Kolonne "Value" angir alle verdiene, og "Unit" forteller hvordan disse er målt.**
 
@@ -143,7 +143,20 @@ tromso <-  filter(skatt_troms_2015, kommnr == "1902")
 
 Lag en ny variabel ved hjelp av mutate() som viser inntekt fratrukket skatt. Noen av disse verdiene er negative, og disse kan du sette lik 0, for eksempel ved data\[data \< 0\] \<- 0 dersom dataframe heter "data").
 
+```{r}
+tromso <- tromso %>% 
+mutate(nettoinntekt=inntekt-skatt)
+tromso[tromso<0]<-0
+```
+
 Oppgave 4a Tegn et spredningsplott med fødselsår på x-aksen og inntekt (før og etter skatt) på y-aksen. Hvordan kan vi tolke dette bildet i forhold til inntektsulikhet i Tromsø kommune, og hvilken rolle spiller skattesystemet her?
+
+```{r}
+ggplot(aes(x=fødselsår, y=inntekt, color=col))
+geom_point()
+scatter.smooth()
+
+```
 
 Oppgave 4b Vi skal nå tegne en figur hvor vi deler befolkningen i stigende rekkefølge etter inntekt (før skatt), og hvor vi tar gjennomsnittsinntekten til hver persentil i kommunen. Kjør følgende kode for å få dette til:
 
@@ -197,11 +210,13 @@ Tegn to Lorenz-kurver for Tromsø kommune (før og etter skatt), samt tilhørend
 
 **Er inntektsfordelingen i Tromsø mer eller mindre lik sammenliknet med landet som helhet? Gi mulige forklaringer.**
 
-Tromsø
+Inntektsfordelingen i Tromsø er mindre lik sammenliknet med landet som helhet, hvis vi ser på de relevante Gini-koeffisientene for 2015 fra OECD datasettet. Vi kan se at nettoinntekten ved gini-koeffisienten ligger på 0,44 i Tromsø og på 0,27 for hele Norge. Det vil si at Norge som helhet er mer likt inntektsfordelt enn Tromsø.
+
+En grunn til dette kan være at innbyggertallet i Tromsø er nesten ti ganger mindre enn i Oslo.
 
 ```{r}
 ggplot(tromso, aes(inntekt))+
-  stat_lorenz()+ 
+  stat_lorenz()+  
   annotate_ineq(tromso$inntekt)+
   labs (x="andel av befolkningen", y= "andel av inntekt", title = "Lorenz-kurve, tromsø kommune 2015")+
   theme_minimal()
@@ -211,7 +226,7 @@ ggplot(tromso, aes(inntekt))+
 
 tromso <- tromso %>% 
 mutate(nettoinntekt=inntekt-skatt)
-
+tromso[tromso<0]<-0
 
 ggplot(tromso, aes(nettoinntekt))+
   stat_lorenz()+ 
