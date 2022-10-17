@@ -221,6 +221,14 @@ Del vektene i `df` på 1000, og sjekk at de summerer seg til om lag `1` for hver
 df_ny <- df %>%
   pivot_wider(names_from = konsumgruppe, values_from = value)
 
+df_vekter <- df_ny[-c(0:129),]
+
+df_vekter <- df_ny %>%
+  mutate()
+
+
+rowsum()
+
 
 ```
 
@@ -230,6 +238,7 @@ Beregn en totalindeks hvor dere bruker vektene og verdiene på prisindeks i form
 
 ```{r}
 # besvar oppgave IIIb her
+
 ```
 
 $$Besvar oppgave IIIb her$$
