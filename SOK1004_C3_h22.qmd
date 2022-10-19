@@ -221,15 +221,11 @@ Del vektene i `df` på 1000, og sjekk at de summerer seg til om lag `1` for hver
 df_ny <- df %>%
   pivot_wider(names_from = konsumgruppe, values_from = value)
 
-df_vekter <- df_ny[-c(0:129),]
+df_vekter <- df_ny[-c(0:141),] 
 
-df_vekter <- df_ny %>%
-  mutate()
-
-
-rowsum()
-
-
+df_vekter <- df_vekter %>%
+  mutate(total_row = rowSums(.[3:95])/1000) %>%
+  relocate(total_row, .after=dato)
 ```
 
 ## Oppgave IIIb: Beregn prisindeksen fra gruppene med vekter
@@ -238,6 +234,8 @@ Beregn en totalindeks hvor dere bruker vektene og verdiene på prisindeks i form
 
 ```{r}
 # besvar oppgave IIIb her
+df_ny <- df_ny %>%
+  
 
 ```
 
@@ -249,6 +247,7 @@ Lag en figur som illustrerer vekstbidraget til konsumgruppen "Elektrisitet, inkl
 
 ```{r}
 # Besvar oppgave IV her
+
 ```
 
 $$Besvar oppgave IV her.$$
