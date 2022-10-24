@@ -38,6 +38,8 @@ Tolk ligning $(4)$. Gi en konkret forklaring på hva tallet representerer.
 
 $$Besvar Oppgave I her$$
 
+Ved å se på ligningen kan vi se at tallet representerer vekstbidraget.
+
 # Oppgave II: Rydd i data
 
 Vi begynner med å rydde og laste inn pakker.
@@ -235,8 +237,8 @@ Beregn en totalindeks hvor dere bruker vektene og verdiene på prisindeks i form
 ```{r}
 # besvar oppgave IIIb her
 df_ny <- df_ny %>%
+  pivot_wider()
   
-
 ```
 
 $$Besvar oppgave IIIb her$$
@@ -247,7 +249,10 @@ Lag en figur som illustrerer vekstbidraget til konsumgruppen "Elektrisitet, inkl
 
 ```{r}
 # Besvar oppgave IV her
-
+df_ny %>% 
+  filter( %in% ) %>%
+  ggplot(aes(x= , y=year  , color=col)) %>%
+  + geom_point()
 ```
 
 $$Besvar oppgave IV her.$$
@@ -257,3 +262,5 @@ $$Besvar oppgave IV her.$$
 I oppgave IV beregnet vi den direkte effekten av kraftpriser på konsumprisindeksen, gjennom husholdningenes eget forbruk. Diskuter hvorvidt høye kraftpriser indirekte kan bidra til konsumprisvekst.
 
 $$Besvar oppgave V her.$$
+
+Konsumprisindeksen måles ved inflasjon. Høye kraftpriser kan indirekte bidra til konsumprisvekst. Høye kraftpriser fører til at strømpriser/strømkostnadene går opp. Dette vil igjen føre til at det blir dyrere å produsere varer og tjenester, som deretter fører til at bedrifter øker prisene som påvirker husholdningen.
