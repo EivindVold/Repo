@@ -1,3 +1,9 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
 # Instruksjoner
 
 Denne oppgaven skal løses interaktivt i RStudio ved å legge inn egen kode og kommentarer. Det ferdige dokumentet lagres med kandidatnummeret som navn `[kandidatnummer]_SOK1004_C4_H22.qmd` og lastes opp på deres GitHub-side. Hvis du har kandidatnummer 43, så vil filen hete `43_SOK1004_C4_H22.qmd`. Påse at koden kjører og at dere kan eksportere besvarelsen til pdf. Lever så lenken til GitHub-repositoriumet i Canvas.
@@ -147,14 +153,18 @@ df2<-df2 %>%
 
 df2<-df2 %>%
   select(-c(`10-19 sysselsatte`, `10-49 sysselsatte`))
+
+df2<-df2 %>% 
+  pivot_longer(3:7, names_to="sysselsatte", values_to ="verdi")
 ```
 
 ```{r}
-data(df2)
 df2 %>%
-  ggplot(aes(mpg)) +
-  geom_histogram(binwidth=5) +
-  theme_minimal()
+  ggplot(aes(verdi)) +
+  geom_histogram(binwidth=1000) +
+  theme_minimal()+
+  facet_grid(sysselsatte~næring)
+
 ```
 
 # Oppgave IV: Undersøk fordelingen igjen
