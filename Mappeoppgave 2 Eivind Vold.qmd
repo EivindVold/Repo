@@ -159,6 +159,9 @@ figur_2
 (i) Vis i figuren husholdningens optimale tilpasning. Forklar hvorfor
     dette er en optimal tilpasning.
 
+    Dette er en optimal tilpasning, fordi vi velger punktet hvor
+    budsjettlinjen og indifferenskurven krysser.
+
 ```{r}
 bud_1 <- function(x) 8500-0.8*x
 
