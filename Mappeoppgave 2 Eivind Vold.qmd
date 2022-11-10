@@ -1,0 +1,267 @@
+---
+editor_options: 
+  markdown: 
+    wrap: 72
+  chunk_output_type: console
+---
+
+SOK-1004, høst 2022, Mappeoppgave 2 AUTHOR Derek J. Clark
+
+1.  Bakgrunn I denne oppgaven skal du undersøke hvordan en husholdning
+    fordeler sitt forbruksbudsjett mellom varer. Denne fordelingen
+    kobles deretter til vektene som brukes til å beregne
+    Konsumprisindeksen (KPI). Til slutt analyserer vi ulike måter som
+    husholdningen kan kompenseres for prisendringer.
+
+2.  Instruksjoner og oppgaver Mappeoppgaven kan besvares individuelt
+    eller i grupper på inntil 3. Grupper anbefales å undertegne en
+    samarbeidsavtale.
+
+Dere skal levere en pdf fil som inneholder tekst, figurer og kode. Bruk
+gjerne Quarto i RStudio som plattform. Bruk følgende YAML kode øverst i
+dokumentet
+
+------------------------------------------------------------------------
+
+title: "SOK-1004, høst 2022, Mappeoppgave 2"
+
+author: "\[354\]"
+
+format: pdf
+
+echo: true
+
+output: true
+
+editor: visual
+
+------------------------------------------------------------------------
+
+Dokumentet skal besvare spørsmålene nedenfor.
+
+Oppgave 1. Husholdningens tilpasning Oppgave 1a Vi skal se på en
+husholdning som fordeler sitt budsjett hver uke mellom mat (M) og andre
+konsumgoder (K). Preferansene til husholdningen uttrykkes gjennom en
+nyttefunksjon . Nivåkurvene til nyttefunksjonen kalles
+indifferenskurver. Anta at husholdningens nyttefunksjon er av type
+Cobb-Douglas:
+
+En indifferenskurve som gir nyttenivå defineres som
+
+La oss bruke ggplot2 til å tegne noen indifferenskurver. Først må vi
+skrive om (2):
+
+I det videre skal vi anta at
+
+, slik at (3) skrives
+
+Følgende kode tegner tre indifferenskurver for nyttenivåene 4000, 4741
+og 5500
+
+```{r}
+rm(list = ls())
+
+suppressPackageStartupMessages(library(tidyverse))
+
+
+# vi lager oss noen tall for x-variabelen (mat)
+
+x <- seq(0, 10500, by = 1)
+
+# gjør om til data frame
+
+df <- data.frame(x)
+
+#lag aksen for tegningen
+
+axes_1 <- ggplot(df, aes(x))+
+  labs(title="Husholdningens tilpasning", 
+    x="Mat",
+    y="Konsumgoder")+
+  theme(axis.title = element_text(size = 20),
+        plot.title = element_text(size = 20),
+        panel.background = element_blank(), # hvit bakgrunn
+        axis.line = element_line(colour = "black"))+ # sett inn akselinjer
+  coord_fixed(ratio = 1)+ # lik skala for x og y aksen
+  scale_x_continuous(limits = c(0, 10500), expand = c(0, 0))+
+  scale_y_continuous(limits = c(0, 9000), expand = c(0, 0)) # begrense aksene
+# og sikre at akselinjene møttes i (0,0).
+
+# vi angir noen indifferenskurver
+
+I_0 <- function(x) (4000^(5/3))/x^(2/3) # nyttenivå 4000
+I_1 <- function(x) (4741^(5/3))/x^(2/3)
+I_2 <- function(x) (5500^(5/3))/x^(2/3)
+
+figur_1 <- axes_1 + 
+  stat_function(df,
+        fun=I_0,
+        mapping = aes()
+        ) +
+  stat_function(df,
+                fun=I_1,
+                mapping = aes()
+  ) +
+  stat_function(df,
+                fun=I_2,
+                mapping = aes()
+  )+
+  annotate("text",x=10000,y=1900, label="I_0")+
+  annotate("text",x=10000,y=2650, label="I_1")+
+  annotate("text",x=10000,y=3500, label="I_2")
+
+figur_1
+```
+
+Forklar: (i) Hvorfor indifferenskurvene heller nedover; (ii) hvorfor
+nytten er størst når vi beveger oss i nordøstlig retning i figuren;
+(iii) hvorfor indifferenskurvene ikke krysser.
+
+indifferenskruver heller nedover fordi nyttenivået holdes likt. hvis man
+vil ha mer mat, vil man få minde konsumgoder, og vil man ha mer
+konsumgoder får man mindre mat.
+
+Vi måler den ene enheten i forhold til den andre. Når vi møtes i midten,
+altså nordøstlig retning i figuren, vil vi få størst nytte.
+
+Indifferenskurvene krysser ikke fordi de har forskjellige nytteverdier.
+differenskurvene som ligger høyere, har høyere nytteverdi.
+
+Oppgave 1b Ifølge SSBs Inntektsstatistikk for 2020 er inntekten etter
+skatt for enn husholdning med en enslig forelder med barn mellom 0-17 år
+ca 444 700 kr pr år. La oss runde av og si at denne husholdningen har
+8500kr per uke å fordele mellom mat og annet konsum. Vi normaliserer
+prisen på konsum til 1 kr per enhet (slik at enheter konsum er identisk
+med kronebeløpet brukt på konsum). Prisen på en enhet mat er 0,80 kr.
+
+(i) Skriv en likning som beskriver husholdningens budsjettlinje hver uke
+    med denne inntekten og disse prisene .
+
+    8500-0.8\*x
+
+(ii) Hva er helningen til budsjettlinjen, og hvordan tolkes denne?
+
+     Helningen til budsjettlinjen viser forskjellen mellom konsumgoder
+     og mat, og hvor mye vi kan få av hver godene, ved å ofre litt av
+     den ene for den andre goden.
+
+Oppgave 1c La oss legge budsjettlinjen på figuren med indifferenskurvene
+
+```{r}
+bud_1 <- function(x) 8500-0.8*x
+figur_2 <- figur_1+
+  stat_function(df,fun=bud_1, mapping = aes())+
+annotate("text",x=8900,y=1000, label="bud_1")
+
+figur_2
+```
+
+(i) Vis i figuren husholdningens optimale tilpasning. Forklar hvorfor
+    dette er en optimal tilpasning.
+
+```{r}
+bud_1 <- function(x) 8500-0.8*x
+
+figur_3 <- figur_2 +
+  geom_point(x=4250, y=5100)
+
+figur_3
+```
+
+(ii) Det viser seg at i en optimal tilpasning kjøper denne husholdningen
+     5100 enheter konsumgoder og 4250 enheter mat. Hvilken andel av
+     husholdningens inntekt brukes på konsum og på mat?
+
+Oppgave 2. Budsjettandeler og vekter i Konsumprisindeksen (KPI) Tabell
+03013 på SSB inneholder vekter som brukes til å beregne
+konsumprisindeksen (KPI). Se Case 3 for hvordan KPI beregnes. Fra denne
+tabellen velg Statistikkvariabel: Konsumprisindeks (vekter), Måned:
+1999M01-2022M09, Konsumgruppe: Hovedgruppenivå: 01 Matvarer og
+alkoholfrie drikkevarer. Last ned disse dataene ved hjelp av en JSON
+spørring. Lag en figur som viser utviklingen til disse vektene over tid.
+Gi figuren en passende tittel, benevning av aksene og legende. Kommentér
+figuren.
+
+Tabell 10235 på SSB gir blant annet andelen av forbruksutgift brukt på
+forskjellige varer fra Forbruksundersøkelsen (FBU). Fra denne tabellen
+velg Statistikkvariabel: Andel av forbruksutgift i alt (prosent), År:
+Velg alle, Vare- og tjenestegruppe: Hovedgruppenivå: 01 Matvarer og
+alkoholfrie drikkevarer. Last ned disse dataene ved hjelp av en JSON
+spørring.
+
+Vi skal sammenlikne disse seriene. For å gjøre dette må du transformere
+den første serien (I) til årlige observasjoner (beskriv hvordan du
+velger å gjøre dette), og (II) til prosent (fra promille). Plott seriene
+på samme figur med passende tittel, benevning på aksene, og legende.
+
+(i) Hva viser figuren?
+
+(ii) Foreslå grunner til at disse to seriene avviker fra hverandre.
+
+(iii) Hvorfor gikk KPI-vektene for matvarer mye opp mellom 2010 og 2011?
+      Hvordan har disse vektene utviklet seg fra 2011, og hvorfor?
+
+En nyttig kilde her kan være Nytt i konsumprisindeksen:
+Nasjonalregnskapet - ny vektkilde av Tom Langer og Randi Johannessen,
+Økonomiske analyser 4/2010.
+
+Oppgave 3. Vi skal se på effekten av en prisøkning på matvarer på
+husholdningens tilpasning.
+
+Oppgave 3a Husholdningen fra oppgave 1 merker at prisen på mat øker fra
+0,80 kr til 0,85 kr per enhet. Tegn en figur som viser den gamle og den
+nye tilpasningen. For å tegne figuren i R kan det være nyttig å vite at
+husholdningen kjøper nå 5100 enheter konsumgoder og 4000 enheter mat i
+den nye tilpasningen. Lag en ryddig figur som består av to
+indifferenskurver og to budsjettlinjer, og merk den gamle og den nye
+tilpasningen i figuren.
+
+```{r}
+
+```
+
+Oppgave 3b (i) Vis i figuren hvordan den totale nedgangen i
+husholdningens konsum av mat kan dekomponeres i en inntekts- og
+substitusjonseffekt.
+
+(ii) Myndighetene vurderer å kompensere husholdningen for prisøkningen
+     på matvarer. Vis i figuren hvor mye inntekt husholdningen bør få
+     tilført for å få det like bra som før prisøkningen. (Hint: ettersom
+     prisen på konsumgoder er 1 kan dette beløpet vises i figuren som en
+     vertikal avstand, dvs x konsumgoder koster x kr).
+
+(iii) I Case 3 har dere sett hvordan KPI beregnes, og dette er også
+      diskutert i Johannessen (2014) (avsnitt som heter "Et teoretisk
+      utgangspunkt") og Langer og Johannessen (2010) side 41. Man legger
+      til grunn en versjon av en Laspeyres indeks. Beskriv med ord
+      hvordan en Laspeyres indeks settes sammen. Vis i din figur fra
+      3b(ii) hvor mye inntekt husholdningen ville få fra myndighetene om
+      denne metoden legges til grunn. Hva antas om substitusjonseffekten
+      her?
+
+(iv) "Siktemålet med konsumprisindeksen (KPI) er å lage en
+     levekostnadsindeks som skal gi svar på hvilken inntektskompensasjon
+     som er nødvendig for at en gjennomsnittlig husholdning skal kunne
+     opprettholde sin levestandard når prisen på varer og tjenester
+     endres" (Johannessen, 2014; 13). Basert på dine svar til (ii) og
+
+     (iii) hvor bra fungerer KPI som levekostnadsindeks?
+
+<!-- -->
+
+3.  Bedømmelse Formålet med oppgaven er å gi dere trening i å
+
+nytte grunnleggende samfunnsøkonomiske begrep og teori forstå koblingen
+mellom økonomiske modeller og virkelighet bruke en modell for å
+analysere en abstrakt problemstilling skrive godt og tydelig En god
+besvarelse svarer konkret på oppgavene, gir tydelige definisjoner av
+faglige begrep, og forklarer utfyllende innholdet i figurene som dere
+lager. R-koden bør være godt dokumentert og oversiktlig.
+
+4.  Tilbakemelding underveis Dere vil få anledning til å levere oppgaven
+    til Derek én gang og få tilbakemelding. Utkast sendes per e-post
+    ([derek.clark\@uit.no](mailto:derek.clark@uit.no){.email}) innen
+    torsdag 10. november klokken 16.00. Besvarelser som sendes etter
+    fristen blir ikke kommentert.
+
+Lykke til!
