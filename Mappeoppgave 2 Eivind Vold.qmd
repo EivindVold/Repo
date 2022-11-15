@@ -175,15 +175,20 @@ figur_3
      5100 enheter konsumgoder og 4250 enheter mat. Hvilken andel av
      husholdningens inntekt brukes på konsum og på mat?
 
-Oppgave 2. Budsjettandeler og vekter i Konsumprisindeksen (KPI) Tabell
-03013 på SSB inneholder vekter som brukes til å beregne
-konsumprisindeksen (KPI). Se Case 3 for hvordan KPI beregnes. Fra denne
-tabellen velg Statistikkvariabel: Konsumprisindeks (vekter), Måned:
-1999M01-2022M09, Konsumgruppe: Hovedgruppenivå: 01 Matvarer og
-alkoholfrie drikkevarer. Last ned disse dataene ved hjelp av en JSON
-spørring. Lag en figur som viser utviklingen til disse vektene over tid.
-Gi figuren en passende tittel, benevning av aksene og legende. Kommentér
-figuren.
+     Vi har 4250 kr mat = 4250\*0.8=3400, og 5100 kr konsumgoder. Dette
+     gir oss et budsjett på 8500. Deretter tar vi 3400/8500= 0,4 og
+     5100/8500=0,6. Vi finner ut at 40% av inntekten brukes på mat, og
+     60% på konsumgoder.
+
+     Oppgave 2. Budsjettandeler og vekter i Konsumprisindeksen (KPI)
+     Tabell 03013 på SSB inneholder vekter som brukes til å beregne
+     konsumprisindeksen (KPI). Se Case 3 for hvordan KPI beregnes. Fra
+     denne tabellen velg Statistikkvariabel: Konsumprisindeks (vekter),
+     Måned: 1999M01-2022M09, Konsumgruppe: Hovedgruppenivå: 01 Matvarer
+     og alkoholfrie drikkevarer. Last ned disse dataene ved hjelp av en
+     JSON spørring. Lag en figur som viser utviklingen til disse vektene
+     over tid. Gi figuren en passende tittel, benevning av aksene og
+     legende. Kommentér figuren.
 
 ```{r}
 rm(list=ls()) 
@@ -191,6 +196,8 @@ library(tidyverse)
 library(rjstat)
 library(g.data)
 library(httr)
+library(rjstat)
+library(lubridate)
 ```
 
 ```{r}
@@ -517,13 +524,20 @@ query <- '{
 hent_indeks.tmp <- url %>%
   POST(body = query, encode = "json")
 
-df <-  hent_indeks.tmp %>%
+df_vekter <-  hent_indeks.tmp %>%
   content("text") %>%
   fromJSONstat() %>%
   as_tibble()
 ```
 
 ```{r}
+df_vekter <- df_vekter %>%
+  separate(måned, 
+           into=c("year", "month"), 
+           sep="M") %>% 
+  mutate(dato= ymd(paste(year, month, "1")))%>%
+  select(-c(`month`, year))
+
 
 ```
 
@@ -538,6 +552,65 @@ Vi skal sammenlikne disse seriene. For å gjøre dette må du transformere
 den første serien (I) til årlige observasjoner (beskriv hvordan du
 velger å gjøre dette), og (II) til prosent (fra promille). Plott seriene
 på samme figur med passende tittel, benevning på aksene, og legende.
+
+```{r}
+url <- "https://data.ssb.no/api/v0/no/table/10235/"
+
+query <- '{
+  "query": [
+    {
+      "code": "Forbruksundersok",
+      "selection": {
+        "filter": "vs:ForbrukHushold2",
+        "values": [
+          "FB2_01"
+        ]
+      }
+    },
+    {
+      "code": "ContentsCode",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "AndForbrUtg"
+        ]
+      }
+    }
+  ],
+  "response": {
+    "format": "json-stat2"
+  }
+}'
+
+hent_indeks.tmp <- url %>%
+  POST(body = query, encode = "json")
+
+df_utgift <-  hent_indeks.tmp %>%
+  content("text") %>%
+  fromJSONstat() %>%
+  as_tibble()
+
+```
+
+```{r}
+df_vekter$måned <- as.numeric(format(df_vekter$dato, "%m"))
+df_vekter <- df_vekter%>%
+  filter(måned==08)
+df_vekter$år <- as.numeric(format(df_vekter$dato, "%Y"))
+df_vekter <- df_vekter %>%
+  subset(select=-c(måned,dato)) %>%
+  mutate(value=value/10)
+
+df_utgift <- df_utgift %>%
+  rename(konsumgruppe = `vare- og tjenestegruppe`) %>%
+  rename(kpi=statistikkvariabel) %>%
+  mutate(år=as.numeric(år))
+
+```
+
+```{r}
+t <- seq()
+```
 
 (i) Hva viser figuren?
 
