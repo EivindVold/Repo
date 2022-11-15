@@ -609,7 +609,16 @@ df_utgift <- df_utgift %>%
 ```
 
 ```{r}
-t <- seq()
+t <- seq(1999, 2022, by=2)
+ggplot()+
+  geom_point(data=df_vekter, aes(x=år, y=value), color="dark blue")+
+  geom_point(data=df_utgift, aes(x=år, y=value), color="orange")+
+  geom_line(data=df_vekter, aes(x=år, y=value), color="dark blue")+
+  geom_line(data=df_utgift, aes(x=år, y=value), color="orange")+
+  scale_x_continuous(breaks = t)+
+  labs(title="sammenhengen mellom kpi vektene og utgiftene i forhold til de totale utgiftene",
+y="prosent", color="")
+  
 ```
 
 (i) Hva viser figuren?
