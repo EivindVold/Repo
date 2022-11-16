@@ -623,14 +623,27 @@ y="prosent", color="")
 
 (i) Hva viser figuren?
 
+    Figuren viser sammenhengen mellom kpi vektene og utgiftene i forhold
+    til de totale utgiftene. Den oransje grafen viser andelen av totale
+    forbruksutgifter for matvarer og alkoholfrie drikkevarer. Den blå
+    viser også vektene basert på periodiske husholdningsverdier fram til
+    2011, men etter dette er vektene basert på innsamlet data, som blir
+    analysert og gjort om til promille.
+
 (ii) Foreslå grunner til at disse to seriene avviker fra hverandre.
+
+     Grunnen til at disse to serien avviker fra hverandre er at det er
+     gamle og nye målinger. Den blå ble samlet med undersøkelse av
+     husholdningen, mens den andre er nøyaktig ut i fra forbruket.
 
 (iii) Hvorfor gikk KPI-vektene for matvarer mye opp mellom 2010 og 2011?
       Hvordan har disse vektene utviklet seg fra 2011, og hvorfor?
 
-En nyttig kilde her kan være Nytt i konsumprisindeksen:
-Nasjonalregnskapet - ny vektkilde av Tom Langer og Randi Johannessen,
-Økonomiske analyser 4/2010.
+      Grunnen til at KPI-vektene gikk mye opp var fordi fra og med 2011
+      tok SSB i bruk nye tall fra nasjonalregnskapet istedenfor
+      forbruksundersøkelsen som var brukt siden 1960. Når de nye tallene
+      kom, var det en stor økning, men deretter har det vært rellativt
+      stabilt, med litt nedgang.
 
 Oppgave 3. Vi skal se på effekten av en prisøkning på matvarer på
 husholdningens tilpasning.
@@ -644,7 +657,17 @@ indifferenskurver og to budsjettlinjer, og merk den gamle og den nye
 tilpasningen i figuren.
 
 ```{r}
+bud_1 <- function(x) 9100-0.85*x
+figur_2 <- figur_1+
+  stat_function(df,fun=bud_1, mapping = aes())+
+annotate("text",x=8100,y=1000, label="bud_1")
 
+bud_1 <- function(x) 9100-0.85*x
+
+figur_3 <- figur_2 +
+  geom_point(x=4000, y=5100)
+
+figur_3
 ```
 
 Oppgave 3b (i) Vis i figuren hvordan den totale nedgangen i
@@ -671,24 +694,22 @@ substitusjonseffekt.
      som er nødvendig for at en gjennomsnittlig husholdning skal kunne
      opprettholde sin levestandard når prisen på varer og tjenester
      endres" (Johannessen, 2014; 13). Basert på dine svar til (ii) og
+     hvor bra fungerer KPI som levekostnadsindeks?
 
-     (iii) hvor bra fungerer KPI som levekostnadsindeks?
+     <!-- -->
 
-<!-- -->
+     Bedømmelse Formålet med oppgaven er å gi dere trening i å nytte
+     grunnleggende samfunnsøkonomiske begrep og teori forstå koblingen
+     mellom økonomiske modeller og virkelighet bruke en modell for å
+     analysere en abstrakt problemstilling skrive godt og tydelig En god
+     besvarelse svarer konkret på oppgavene, gir tydelige definisjoner
+     av faglige begrep, og forklarer utfyllende innholdet i figurene som
+     dere lager. R-koden bør være godt dokumentert og oversiktlig.
 
-3.  Bedømmelse Formålet med oppgaven er å gi dere trening i å
-
-nytte grunnleggende samfunnsøkonomiske begrep og teori forstå koblingen
-mellom økonomiske modeller og virkelighet bruke en modell for å
-analysere en abstrakt problemstilling skrive godt og tydelig En god
-besvarelse svarer konkret på oppgavene, gir tydelige definisjoner av
-faglige begrep, og forklarer utfyllende innholdet i figurene som dere
-lager. R-koden bør være godt dokumentert og oversiktlig.
-
-4.  Tilbakemelding underveis Dere vil få anledning til å levere oppgaven
-    til Derek én gang og få tilbakemelding. Utkast sendes per e-post
-    ([derek.clark\@uit.no](mailto:derek.clark@uit.no){.email}) innen
-    torsdag 10. november klokken 16.00. Besvarelser som sendes etter
-    fristen blir ikke kommentert.
+     Tilbakemelding underveis Dere vil få anledning til å levere
+     oppgaven til Derek én gang og få tilbakemelding. Utkast sendes per
+     e-post ([derek.clark\@uit.no](mailto:derek.clark@uit.no){.email})
+     innen torsdag 10. november klokken 16.00. Besvarelser som sendes
+     etter fristen blir ikke kommentert.
 
 Lykke til!
