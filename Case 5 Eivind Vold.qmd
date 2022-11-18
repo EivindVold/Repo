@@ -223,7 +223,17 @@ df <- df %>%
 
 ```{r}
 df <- df %>%
-  ()
+  mutate("lag_total"=lag(df_felles,1))
+```
 
-lag(1:5, n=1)
+```{r}
+df <- df %>%
+  mutate("prosent"=(100*(df_felles-lag_total)/df_felles))
+```
+
+```{r}
+ df %>%
+  ggplot(aes(x = år, y=prosent))+
+  geom_bar(stat = 'identity') +
+  geom_smooth()
 ```
