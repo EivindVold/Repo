@@ -26,7 +26,7 @@ Hvorfor trekker Produktivitetskommisjon fra produksjonen av boligtjenester, offe
 
 $$Svar på oppgave Ia her$$
 
-det er enorme verdier som kan påvirke bnp, ved at oljeverdiene er så stor at de andre verdiene vil forsvinne. Verdiene av finansenformuen reflekterer bedre produktivitenen.
+Oljeverdiene er enorme verdier som kan påvirke bnp, ved at de er så stor at de andre verdiene vil forsvinne. Verdiene av finansenformuen reflekterer bedre produktivitenen.
 
 ## Oppgave Ib
 
@@ -228,13 +228,20 @@ df <- df %>%
 
 ```{r}
 df <- df %>%
-  mutate("prosent"=(100*(df_felles-lag_total)/df_felles))+
-  as.integer(år)
+  mutate("prosent"=(100*(df_felles-lag_total)/df_felles)) %>% 
+  mutate("årstall"=as.integer(år))
+  
 ```
 
 ```{r}
  df %>%
-  ggplot(aes(x = år, y=prosent))+
+  ggplot(aes(x = årstall, y=prosent))+
   geom_bar(stat = 'identity') +
-  geom_smooth()
+  geom_smooth(se=FALSE)
+```
+
+```{r}
+df1 <- df %>%
+  summarise(prosent) %>%
+  
 ```
