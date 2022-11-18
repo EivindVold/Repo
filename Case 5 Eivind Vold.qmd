@@ -228,7 +228,8 @@ df <- df %>%
 
 ```{r}
 df <- df %>%
-  mutate("prosent"=(100*(df_felles-lag_total)/df_felles))
+  mutate("prosent"=(100*(df_felles-lag_total)/df_felles))+
+  as.integer(år)
 ```
 
 ```{r}
