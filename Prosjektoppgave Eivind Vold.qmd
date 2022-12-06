@@ -144,6 +144,22 @@ labs(title = "BNP per person",
 
 **Merknad:** Anta at estimatet av BNP og Gini-koeffisienten i figuren er sann. Det er ikke nødvendig å diskutere metoden Norges Bank og Modalsli, Aaberge og Atkinson (2021) har brukt til å estimere BNP og Gini-koeffisienten eller den statistiske usikkerheten rundt estimatet.
 
+Den første Figuren viser hvordan inntektsfordelingen utvikler seg i Norge mellom 1875-2017
+ved hjelp av Gini-koeffesienten. «Gini-koeffisienten måler inntektsulikhet innenfor et land
+eller en befolkning. Utregningen er komplisert, men kort forklart ser man på
+hvor mye inntekt og formue det totalt sett finnes i landet, og deretter på
+hvordan dette er fordelt i befolkningen. Resultatet er et tall som vil ligge et
+sted mellom 0 og 1.» (Epland, & Tuv, 2019.)
+
+Gini-koeffisienten ligger ganske høyt oppe fra 1875 til 1940. Den ligger på omtrent 0,55-0,60, det betyr at det var ganske stor inntektsulikhet mellom denne tidsperioden, og at inntektsulikheten var relativt stabil. På 1920-tallet var det ganske stor inntektsulikhet, men
+etter 1940 minsket den ganske drastisk, ettersom den falt ned til omtrent 0,45.
+
+Den andre figuren viser hvordan BNP per person utvikler seg i Norge mellom 1875-2017. «Bruttonasjonalproduktet (BNP) er lik summen av alle varer og tjenester som produseres i et land i løpet av et år, minus de varene og tjenestene som blir brukt under denne produksjonen.» (Sletten, 2021.) Grafen viser at det er en gradvis økning av BNP per person hele veien. Det er ikke stor forskjell på utviklingen på 1920-tallet, sammenlignet med andre årstall.
+
+Den tredje figuren viser prosentvis endring BNP per person for hvert år. Hvis vi ser bort i fra 1920-1950-tallet, er endringen svært liten og ligger på rundt 5 prosent. Men ser vi på 1920 1950-tallet, kan vi se at prosent-endringen fra år til år varierer stort. Den går ned ti prosent og opp 25 igjen, og slik fortsetter den å variere helt fram til omtrent 1950, hvor den blir mer stabil.
+
+For å oppsumere kan vi si at Inntektsulikhet på 1920-tallet var mye høyere enn ved senere årstall. Vi kan også se at BNP per person har vært stigende fra år til år, men at prosentendringen på 1920-tallet varierte mer, enn ved andre tidsperioder.
+
 # Oppgave II - 20%
 
 I `df_andeler` er det lagret inntektsandeler fordelt på desil og år. Merk at dette er tallene bak Figur A9 i vedleggene til MAA, tilgjengelig [her](https://ars.els-cdn.com/content/image/1-s2.0-S0047272720300608-mmc1.pdf). For eksempel viser `share_10_20` hvor stor andel av den totale inntekten som gikk til intervallet mellom tiende- og tyvende persentil. I følgende figur kombinerer jeg BNP-tallene fra oppgave I med inntektsandelen til å beregne gjennomsnittlig inntekt per person, fordelt på desil og år.
