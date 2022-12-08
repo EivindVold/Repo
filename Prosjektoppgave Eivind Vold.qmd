@@ -144,15 +144,9 @@ labs(title = "BNP per person",
 
 **Merknad:** Anta at estimatet av BNP og Gini-koeffisienten i figuren er sann. Det er ikke nødvendig å diskutere metoden Norges Bank og Modalsli, Aaberge og Atkinson (2021) har brukt til å estimere BNP og Gini-koeffisienten eller den statistiske usikkerheten rundt estimatet.
 
-Den første Figuren viser hvordan inntektsfordelingen utvikler seg i Norge mellom 1875-2017
-ved hjelp av Gini-koeffesienten. «Gini-koeffisienten måler inntektsulikhet innenfor et land
-eller en befolkning. Utregningen er komplisert, men kort forklart ser man på
-hvor mye inntekt og formue det totalt sett finnes i landet, og deretter på
-hvordan dette er fordelt i befolkningen. Resultatet er et tall som vil ligge et
-sted mellom 0 og 1.» (Epland, & Tuv, 2019.)
+Den første Figuren viser hvordan inntektsfordelingen utvikler seg i Norge mellom 1875-2017 ved hjelp av Gini-koeffesienten. «Gini-koeffisienten måler inntektsulikhet innenfor et land eller en befolkning. Utregningen er komplisert, men kort forklart ser man på hvor mye inntekt og formue det totalt sett finnes i landet, og deretter på hvordan dette er fordelt i befolkningen. Resultatet er et tall som vil ligge et sted mellom 0 og 1.» (Epland, & Tuv, 2019.)
 
-Gini-koeffisienten ligger ganske høyt oppe fra 1875 til 1940. Den ligger på omtrent 0,55-0,60, det betyr at det var ganske stor inntektsulikhet mellom denne tidsperioden, og at inntektsulikheten var relativt stabil. På 1920-tallet var det ganske stor inntektsulikhet, men
-etter 1940 minsket den ganske drastisk, ettersom den falt ned til omtrent 0,45.
+Gini-koeffisienten ligger ganske høyt oppe fra 1875 til 1940. Den ligger på omtrent 0,55-0,60, det betyr at det var ganske stor inntektsulikhet mellom denne tidsperioden, og at inntektsulikheten var relativt stabil. På 1920-tallet var det ganske stor inntektsulikhet, men etter 1940 minsket den ganske drastisk, ettersom den falt ned til omtrent 0,45.
 
 Den andre figuren viser hvordan BNP per person utvikler seg i Norge mellom 1875-2017. «Bruttonasjonalproduktet (BNP) er lik summen av alle varer og tjenester som produseres i et land i løpet av et år, minus de varene og tjenestene som blir brukt under denne produksjonen.» (Sletten, 2021.) Grafen viser at det er en gradvis økning av BNP per person hele veien. Det er ikke stor forskjell på utviklingen på 1920-tallet, sammenlignet med andre årstall.
 
@@ -230,13 +224,13 @@ andeler <- df$var %>%
 
 ```{r}
 df %>% 
-  filter(year %in% c(1900:1930)) %>% 
+  filter(year %in% c(1920:1930)) %>% 
   filter(var %in% andeler[1:10]) %>% 
   mutate(verdi=verdi/(10^5)) %>%
   ggplot(aes(x=year,y=verdi,color=var)) +
   geom_line(size=1.25) +
   labs(title = "BNP per person",
-       subtitle = "Hundretusener faste 2005-kroner. Fordelt på inntektsdesiler. 1900-1950",
+       subtitle = "Hundretusener faste 2005-kroner. Fordelt på inntektsdesiler. 1920-1930",
        y = "BNP per person",
        x = "År",
        color = "Desil",
@@ -246,7 +240,7 @@ theme_bw()
 
 ```{r}
 df %>% 
-  filter(year %in% c(1900:1930)) %>% 
+  filter(year %in% c(1920:1930)) %>% 
   mutate(verdi=log(verdi)) %>% 
   filter(var %in% andeler[1:10]) %>% 
   
@@ -257,7 +251,7 @@ df %>%
   geom_line(size=1.25) +
   
   labs(title = "Log BNP per person", 
-       subtitle = "Faste 2005-kroner. Fordelt på inntektsdesiler. 1900 - 1930",
+       subtitle = "Faste 2005-kroner. Fordelt på inntektsdesiler. 1920 - 1930",
        y = "Log BNP per person",
        x = "År",
        color =  "Desil",
@@ -286,3 +280,25 @@ Her følger fire eksempler på tema dere kan, men ikke nødvendigvis må velge. 
 -   [Arbeidskonflikter og streik](https://snl.no/streik)
 
 I besvarelsen skal dere forklare hvorfor dataene er relevante og gi en grundig beskrivelse av deres utvikling. Lengden på besvarelsen skal være på 750 - 1500 ord.
+
+```{r}
+url <- "https://github.com/EivindVold/Repo/blob/main/PO%20data.xlsx?raw=true"
+
+df_renter <- url %>%  
+  read.xlsx(sheet=1) %>% 
+  as_tibble()
+
+```
+
+```{r}
+df_renter <- df_renter
+  filter(år >= 1900) %>%
+  ggplot(aes(x=år,y=rente) +
+  geom_line() +
+  geom_smooth() +
+  theme_bw()
+```
+
+```{r}
+
+```
