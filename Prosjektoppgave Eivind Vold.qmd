@@ -144,6 +144,8 @@ labs(title = "BNP per person",
 
 **Merknad:** Anta at estimatet av BNP og Gini-koeffisienten i figuren er sann. Det er ikke nødvendig å diskutere metoden Norges Bank og Modalsli, Aaberge og Atkinson (2021) har brukt til å estimere BNP og Gini-koeffisienten eller den statistiske usikkerheten rundt estimatet.
 
+**Oppgave 1**
+
 Den første Figuren viser hvordan inntektsfordelingen utvikler seg i Norge mellom 1875-2017 ved hjelp av Gini-koeffesienten. «Gini-koeffisienten måler inntektsulikhet innenfor et land eller en befolkning. Utregningen er komplisert, men kort forklart ser man på hvor mye inntekt og formue det totalt sett finnes i landet, og deretter på hvordan dette er fordelt i befolkningen. Resultatet er et tall som vil ligge et sted mellom 0 og 1.» (Epland, & Tuv, 2019.)
 
 Gini-koeffisienten ligger ganske høyt oppe fra 1875 til 1940. Den ligger på omtrent 0,55-0,60, det betyr at det var ganske stor inntektsulikhet mellom denne tidsperioden, og at inntektsulikheten var relativt stabil. På 1920-tallet var det ganske stor inntektsulikhet, men etter 1940 minsket den ganske drastisk, ettersom den falt ned til omtrent 0,45.
@@ -261,6 +263,34 @@ theme_bw()
 
 **Spørsmål:** Beskriv hvordan endringen i reelle inntekter fordelte seg på inntektsdesiler mellom 1920 og 1930.
 
+**Oppgave 2**
+
+Intervallet mellom den nittiende- og hundrede persentil har
+en større vekst en alle andre persentiler fra 1920-1930. Det sir oss at de rike
+blir rikere, og at veksten deres skjer raskere, enn ved lavere persentiler. Intervallet
+mellom den åttiende- og nittiende persentil, har langt lavere reelle inntekter,
+enn ved den øverste persentil. Veksten fra 1920-1930 er relativt lik den
+øverste persentil, men på et mye lavere nivå.
+
+Intervallet mellom den syttiende- og åttiende persentil
+holdt seg forholdsmessing det samme fra 1920-1925, deretter var det en nedgang
+de neste fem årene i reelle inntekter. Intervallet mellom den sekstiende- og
+syttiende persentil er det eneste intervallet med en kraftig nedgang i løpet av
+det første året. Deretter var den reelle inntekten omtrent det samme.
+
+Intervallene fra sekstiende- til trettiende persentil holdt
+seg helt stabil gjennom årene 1920-1930, med en liten vekst det første året. De
+tre inntektsdesilene hadde lik vekst i løpet av de ti årene. Intervallet fra
+tiende- til tjuende desil hadde en svak nedgang i 1920-1921, men økte deretter
+svakt. Intervallet fra null- til tiende persentil hadde en god vekst fra 1920-1930
+og endte opp på samme reelle inntekt som tiende- til tjuende persentil.
+
+For å oppsumere kan vi si at de rikeste ble rikere, ettersom
+de hadde en stor vekst i reelle inntekter. Det ble mer likhet på de midterste
+inntektsdesilene, ettersom de ligger omtrent på samme nivå. De laveste inntektsdesilene
+hadde en relativ grei vekst og endte også opp på omtrent samme nivå som
+hverandre.
+
 # Oppgave III - 60%
 
 Dere skal nå presentere og beskrive utviklingen i to ytterligere økonomiske forhold som kjennetegnet de harde 1920-årene. Jeg anbefaler å bruke følgende kilder til å finne data:
@@ -282,23 +312,41 @@ Her følger fire eksempler på tema dere kan, men ikke nødvendigvis må velge. 
 I besvarelsen skal dere forklare hvorfor dataene er relevante og gi en grundig beskrivelse av deres utvikling. Lengden på besvarelsen skal være på 750 - 1500 ord.
 
 ```{r}
-url <- "https://github.com/EivindVold/Repo/blob/main/PO%20data.xlsx?raw=true"
+url <- "https://github.com/EivindVold/Repo/blob/main/Realrente.xlsx?raw=true"
 
-df_renter <- url %>%  
+df_rente <- url %>%  
   read.xlsx(sheet=1) %>% 
   as_tibble()
 
+df_rente <- df_rente %>%
+  mutate("årstall"=as.integer(år))
+
 ```
 
 ```{r}
-df_renter <- df_renter
-  filter(år >= 1900) %>%
-  ggplot(aes(x=år,y=rente) +
+df_rente %>% 
+  ggplot(aes(x=årstall,y=realrente)) +
   geom_line() +
   geom_smooth() +
-  theme_bw()
+  theme_bw() +
+  labs(title = "Realrente", subtitle = "Årlig endring. 1900-1940")
 ```
 
 ```{r}
+url <- "https://github.com/EivindVold/Repo/blob/main/inflasjon.xlsx?raw=true"
 
+df_kpi <- url %>%  
+  read.xlsx(sheet=1) %>% 
+  as_tibble()
+
+df_kpi <- df_kpi %>%
+  mutate("årstall"=as.integer(år))
+```
+
+```{r}
+df_kpi %>% 
+  ggplot(aes(x=årstall,y=inflasjon)) +
+  geom_line() +
+  geom_smooth(se=FALSE) +
+  theme_bw()
 ```
