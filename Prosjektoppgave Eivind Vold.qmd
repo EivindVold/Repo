@@ -4,7 +4,7 @@ Oppklarende spørsmål kan rettes til [even.c.hvinden\@uit.no](mailto:even.c.hvi
 
 # Instruksjoner
 
-Prosjektoppgaven skal leveres som `.pdf` i WiseFlow. Det ferdige dokumentet lagres som `[kandidatnummer]_SOK1004_PO_H22.pdf`. Hvis du har kandidatnummer 43, så vil filen hete `43_SOK1004_PO_H22.pdf`. Det er ingen begrensning på hvilken programvare dere benytter til å lage besvarelsen. Men figurer og utregninger skal gjøres i RStudio og dokumenteres ved hjelp av en en `.qmd`-fil som kompileres som en `.pdf` og inkluderes som vedlegg i besvarelsen.
+Prosjektoppgaven skal leveres som `.pdf` i WiseFlow. Det ferdige dokumentet lagres som `[354]_SOK1004_PO_H22.pdf`. Hvis du har kandidatnummer 354, så vil filen hete `354_SOK1004_PO_H22.pdf`. Det er ingen begrensning på hvilken programvare dere benytter til å lage besvarelsen. Men figurer og utregninger skal gjøres i RStudio og dokumenteres ved hjelp av en en `.qmd`-fil som kompileres som en `.pdf` og inkluderes som vedlegg i besvarelsen.
 
 Merk at prosjektoppgaven består av tre oppgaver. Vekttallene er oppgitt i prosent.
 
@@ -266,7 +266,7 @@ theme_bw()
 **Oppgave 2**
 
 Intervallet mellom den nittiende- og hundrede persentil har
-en større vekst en alle andre persentiler fra 1920-1930. Det sir oss at de rike
+en større vekst enn alle andre persentiler fra 1920-1930. Det sir oss at de rike
 blir rikere, og at veksten deres skjer raskere, enn ved lavere persentiler. Intervallet
 mellom den åttiende- og nittiende persentil, har langt lavere reelle inntekter,
 enn ved den øverste persentil. Veksten fra 1920-1930 er relativt lik den
@@ -312,6 +312,7 @@ Her følger fire eksempler på tema dere kan, men ikke nødvendigvis må velge. 
 I besvarelsen skal dere forklare hvorfor dataene er relevante og gi en grundig beskrivelse av deres utvikling. Lengden på besvarelsen skal være på 750 - 1500 ord.
 
 ```{r}
+#henter data
 url <- "https://github.com/EivindVold/Repo/blob/main/Realrente.xlsx?raw=true"
 
 df_rente <- url %>%  
@@ -324,12 +325,13 @@ df_rente <- df_rente %>%
 ```
 
 ```{r}
+#plotter graf
 df_rente %>% 
   ggplot(aes(x=årstall,y=realrente)) +
   geom_line() +
   geom_smooth() +
   theme_bw() +
-  labs(title = "Realrente", subtitle = "Årlig endring. 1900-1940")
+  labs(title = "Realrente", subtitle = "Årlig endring. 1900-1930")
 ```
 
 ```{r}
@@ -348,5 +350,58 @@ df_kpi %>%
   ggplot(aes(x=årstall,y=inflasjon)) +
   geom_line() +
   geom_smooth(se=FALSE) +
-  theme_bw()
+  theme_bw() +
+  labs(title = "Inflasjon", subtitle = "Årlig endring. 1900-1930")
 ```
+
+**Oppgave 3**
+
+I denne oppgaven skal jeg beskrive utviklingen i økonomiske forhold som kjennetegnet de harde 1920-årene. Jeg skal forklare hvorfor datene er relevante og gi en grundig beskrivelse av utviklingen. Jeg skal hovedsakelig sette søkelys på realrente og inflasjon, og hvordan de kjennetegnet de harde 1920-årene.
+
+«Realrente er differansen mellom den nominelle renten og prisstigning/inflasjon. På grunn av prisstigning vil du få kjøpt mindre for hundre kroner om ett år enn i dag. En del av renten du får i banken går dermed med til å kompensere for høyere priser. Realrenten er renten utover prisstigning, og angir dermed hvor mye renten reelt sett gir i økt kjøpekraft.»
+(Sirnes, 2019, snl.no.)
+
+«Inflasjon er når prisene på varer og tjenester går opp over tid. I Norge bruker vi konsumprisindeksen for å måle inflasjon. Når man sier at inflasjonen er høy, er det gjerne forbundet med noe som er negativt fordi det betyr at kjøpekraften til folk flest har blitt lavere. I hvert fall hvis ikke lønnsveksten har økt i tråd med prisstigningen.» (Aursand, 2022, ssb.no.)
+
+Ved å se på grafen om realrente kan vi se at realrenten var fallende fra 1900-tallet fram til 1918. Deretter ser vi en stigende graf, hvor realrenten vokser kraftig. Hvis vi ser på grafen til inflasjon kan vi se at den er motsatt fra realrentegrafen, med en stigende graf fram til 1918 og deretter en fallende graf. Grunnen til dette er at realrente og inflasjon henger sammen.
+
+Årsaken til at realrenten synker først, er på grunn av at inflasjonen stiger. Når inflasjonen stiger vil realrenten minke. Årsaken til at inflasjon økte var at tilgangen på varer ble mindre enn tilgangen på penger, noe som resulterte i en økning i prisnivået. Første verdenskrig var en av de største årsakene til at inflasjonen økte kraftig mellom 1914 til 1918. Krigen
+førte til konkurranse om ressurser og dette var årsaken til mindre tilgang av varer. En stor årsak til at inflasjonen sank etter 1918, var at krigstiden var over. Prisene falt sterkt og dette førte til en økning i realrente, og en minking i inflasjon. Tilgangen på varer ble større igjen. Tilbud og etterspørsel påvirker altså inflasjonen og realrenten.
+
+Etter inflasjonen sank i 1920 og prisene falt, dukket det opp et arbeidsløshetproblem, fordi det var produksjonsinnskrenkninger. Kronens verdi sank sterkt og pengeverdie ble et stort problem på 1920-tallet. Det var den såkalte paripolitikken som skulle fikse disse problemene. Paripolitikken gikk ut på å bringe kronens internasjonale verdi tilbake til kursen den hadde
+hatt i 1914. Det var trykket ut langt flere sedler enn det var dekning for. Dette førte til at prisene steg og kronekursen falt. Paripolitikken skulle fikse dette. I praksis betydde paripolitikken at pengemengden ble redusert, slik at prisene kunne falle (deflasjon). Dette ble oppnådd ved at Norges bank holdt høye renter og trappet ned på utlånsvirksomhet, noe vi ser på grafen til realrenter. Dette førte til at kronekursen steg oppover.
+
+For å oppsummere kan vi si at realrente og inflasjonen er begreper som kjennetegnet de harde 1920-årene. Det var mange årsaker som påvirket disse to sentrale begrepene. Ved å se på grafene kan vi forstå sammenhengen mellom realrente og inflasjon, og hendelsene som påvirket dem. Det var mye som påvirket realrenten og inflasjonen, men første verdenskrig var den største drivekraften bak utviklingen som hendte de harde 1920-årene.
+
+**Litteraturliste:**
+
+-   Epland, & Tuv.(2019, 9.mai). Slik måler ssb ulikhet.
+
+    <https://www.ssb.no/inntekt-og-forbruk/inntekt-og-formue/statistikk/inntekts-og-formuesstatistikk-for-husholdninger/artikler/slik-maler-ssb-ulikhet>
+
+-   Sletten.(2021, 5.november). Hva er egentlig BNP?
+
+    <https://www.ssb.no/nasjonalregnskap-og-konjunkturer/nasjonalregnskap/statistikk/nasjonalregnskap/artikler/hva-er-egentlig-bnp>
+
+-   Aursand. (2022, 15.september) Hva er inflasjon?
+
+    <https://www.ssb.no/priser-og-prisindekser/konsumpriser/artikler/hva-er-inflasjon>
+
+-   Tvedt. (2022, 22.august) Norges historie fra 1905 til 1939.
+
+    <https://snl.no/Norges_historie_fra_1905_til_1939>
+
+-   Thomassen. (2020, 27.september) Paripolitikk.
+
+    <https://snl.no/paripolitikk>
+
+-   Sirnes. (2019, 9.september) Realrente
+
+    <https://snl.no/realrente>
+
+*Skrevet av: Eivind Vold*
+
+
+
+
+
